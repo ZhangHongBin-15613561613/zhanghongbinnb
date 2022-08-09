@@ -1,0 +1,24 @@
+name: tiwentianbao
+
+on:
+  workflow_dispatch: #在actions界面点击即可运行
+  schedule:
+    - cron: '10 1,2 * * *'  
+  #在UTC时间1:10,2:10运行，也就是北京时间9点10分和10点10分
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+    - run:  pip install requests ./requests.txt  #此处为安装依赖包
+    - run:  pip install lxml ./lxml.txt  #此处为安装依赖包
+    - run: main ./main.py  #此处为python代码的文件名
+
+        
+
+
+lxml
+
